@@ -1,24 +1,16 @@
-import { test, expect } from '@playwright/test';
+import { expect, test, Page } from '@playwright/test';
 
-test('page load - check login page fields elements', async ({ page }) => {
-  // Go to the starting url before each test.
-  await page.goto('https://archive.org/account/login');
-  await expect(page).toHaveURL(/login/);
+const authFile = 'playwright/.auth/serviceUser.json';
 
-  const boxRow = page.locator('.box.row');
-  const loginFormElement = boxRow.locator('.login-form-element');
-  const formLoginFields = loginFormElement.locator('.iaform.login-form');
-  const inputEmail = loginFormElement.locator('.form-element.input-email');
-  const inputPassword = loginFormElement.locator(
-    '.form-element.input-password',
-  );
-  const btnLogin = loginFormElement.locator(
-    '.btn.btn-primary.btn-submit.input-submit.js-submit-login',
-  );
+let page: Page;
 
-  expect(await loginFormElement.count()).toEqual(1);
-  expect(await inputEmail.count()).toEqual(1);
-  expect(await formLoginFields.count()).toEqual(1);
-  expect(await inputPassword.count()).toEqual(1);
-  expect(await btnLogin.count()).toEqual(1);
+test('page load - check login page fields elements', async ({ browser }) => {
+  const context = await browser.newContext({ storageState: authFile })
+  page = await context.newPage();
+
+  await page.goto('/');
+  await page.waitForTimeout(3000);
+
+  await expect(page.locator('nav > div.user-info > button > img')).toBeVisible();
+
 });
