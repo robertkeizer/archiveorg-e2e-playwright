@@ -1,51 +1,41 @@
 {
   "cookies": [
     {
-      "name": "NID",
-      "value": "511=MDKEYlsIgY3VaC-GkH1rsHUGSQj5pkbQEKqoPQgN1vdFGMke9kBPWM7p1LkrwOJwNPpQ1aZoCh9F_VLMuovDmn0wEbL5d3ff98yHM1gyLTLcEvNGIzmEjS5ya9KEpuiyHUReYTQesQsjg2GXDbH_ChVDTirg8ohuVOW5DN1MTTY",
-      "domain": ".google.com",
-      "path": "/",
-      "expires": 1723166689.913453,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
       "name": "test-cookie",
       "value": "1",
       "domain": ".archive.org",
       "path": "/",
-      "expires": 1708565090.054882,
+      "expires": 1708714437.794736,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "ia-auth",
-      "value": "35e2b09e11764c2d03aeb0e34d094b0c",
+      "value": "f2c07de1f74d59ce278f84da98cf8cc1",
       "domain": ".archive.org",
       "path": "/",
-      "expires": 1707355610.054892,
+      "expires": 1707504957.794788,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "donation-identifier",
-      "value": "46d29d04738c833e532ece4a4a25a187",
+      "value": "13f0f2d6d3586375e4561183e87d32f5",
       "domain": ".archive.org",
       "path": "/",
-      "expires": 1738891490.054901,
+      "expires": 1739040837.794833,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "abtest-identifier",
-      "value": "3737de1b01555625c5bfbfe34b5dd8b3",
+      "value": "25b130e21c985b3db39fe07ff9b1a707",
       "domain": ".archive.org",
       "path": "/",
-      "expires": 1738891490.05491,
+      "expires": 1739040837.794872,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"

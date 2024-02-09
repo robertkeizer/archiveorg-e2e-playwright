@@ -1,8 +1,10 @@
+// source: https://playwright.dev/docs/auth
+
 import { test as setup } from '@playwright/test';
 
 import { config } from '../config/config';
 
-const authFile = 'playwright/.auth/serviceUser.json';
+const authFile = 'playwright/.auth/guestUser.json';
 
 setup('authenticate user', async ({ page }) => {
   await page.goto('/account/login');
