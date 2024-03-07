@@ -1,18 +1,38 @@
 import { test as base } from '@playwright/test';
 
+import { BookPage } from './page-objects/book-page';
 import { CollectionPage } from './page-objects/collection-page';
 import { MusicPage } from './page-objects/music-page';
 import { SearchPage } from './page-objects/search-page';
 import { HomePage } from './page-objects/home-page';
+import { LoginPage } from './page-objects/login-page';
 
 type PageFixtures = {
-  homePage: HomePage;
-  musicPage: MusicPage;
+  bookPage: BookPage;
   collectionPage: CollectionPage;
+  homePage: HomePage;
+  loginPage: LoginPage;
+  musicPage: MusicPage;
   searchPage: SearchPage;
 };
 
 export const test = base.extend<PageFixtures>({
+  bookPage: async ({ page }, use) => {
+    // Set up the fixture.
+    const bookPage = new BookPage(page);
+
+    await page.goto('/details/theworksofplato01platiala');
+
+    await page.route(/(analytics|fonts)/, route => {
+      route.abort();
+    });
+
+    // Use the fixture value in the test.
+    await use(bookPage);
+
+    // Clean up the fixture.
+    await page.close();
+  },
   homePage: async ({ page }, use) => {
     // Set up the fixture.
     const homePage = new HomePage(page);
@@ -76,9 +96,12 @@ export const test = base.extend<PageFixtures>({
   },
 });
 
-test.beforeEach(async ({}, testInfo) => {
+test.beforeEach(async ({ request }, testInfo) => {
   // Extend timeout for all tests running this hook by 180 seconds.
-  testInfo.setTimeout(testInfo.timeout + 180000);
+  // testInfo.setTimeout(testInfo.timeout);
+
+  const whathost = await request.get('/services/whathost.php');
+  console.log('whathost: ', await whathost.text());
 });
 
 export { expect } from '@playwright/test';

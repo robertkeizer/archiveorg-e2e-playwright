@@ -21,7 +21,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: ./run-tests.sh
+        run: npm run test
+        # run: ./run-tests.sh
 
       - uses: actions/upload-artifact@v3
         if: always()
