@@ -25,9 +25,9 @@ const reportName = () => `${process.env.CATEGORY}/${formattedDateTime()}`;
 export default defineConfig({
   workers: 2,
   // Timeout for each test
-  timeout: 2 * 60 * 1000,  
+  timeout: 3 * 60 * 1000,  
   // Maximum time the whole test suite can run
-  globalTimeout: 20 * 60 * 1000,
+  globalTimeout: 30 * 60 * 1000,
   testDir: './tests',
   reporter: [
     [

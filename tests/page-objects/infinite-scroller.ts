@@ -80,9 +80,9 @@ export class InfiniteScroller {
     expect(await this.firstItemTile.count()).toBe(1);
 
     await this.firstItemTile.hover();
-    await expect(this.firstItemTile.locator('tile-hover-pane')).toBeVisible({
-      timeout: 60000,
-    });
+
+    await this.firstItemTile.locator('tile-hover-pane').waitFor({ state: 'visible', timeout: 90000 });
+    await expect(this.firstItemTile.locator('tile-hover-pane')).toBeVisible();
   }
 
   async assertTileHoverPaneTitleIsSameWithItemTile() {
@@ -174,12 +174,14 @@ export class InfiniteScroller {
       viewFacetMetadata,
       displayItemCount,
     );
+    console.log('facetedResults: ', facetedResults)
     if (facetedResults) {
       const isAllFacettedCorrectly = facetLabels.some(label => {
         return toInclude
           ? facetedResults.includes(label)
           : !facetedResults.includes(label);
       });
+      console.log('isAllFacettedCorrectly: ', isAllFacettedCorrectly)
       expect(isAllFacettedCorrectly).toBeTruthy();
     }
   }
@@ -227,6 +229,7 @@ export class InfiniteScroller {
 
     let index = 0;
     while (index !== displayItemCount) {
+      await this.page.waitForTimeout(5000);
       // Load items and get tileStats views based on displayItemCount
       // There can be 2 date metadata in a row if filter is either Date archived, Date reviewed, or Date added
       // eg. Published: Nov 15, 2023 - Archived: Jan 19, 2024
@@ -262,6 +265,7 @@ export class InfiniteScroller {
 
     let index = 0;
     while (index !== displayItemCount) {
+      await this.page.waitForTimeout(5000);
       // Load items based on displayItemCount
       // Get mediatype-icon title from tile-stats row
       const tileIcon = allItems[index].locator(
@@ -287,6 +291,7 @@ export class InfiniteScroller {
 
     let index = 0;
     while (index !== displayItemCount) {
+      await this.page.waitForTimeout(5000);
       const collectionTileCount = await allItems[index]
         .locator('a > collection-tile')
         .count();

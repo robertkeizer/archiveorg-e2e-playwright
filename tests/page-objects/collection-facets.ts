@@ -24,6 +24,7 @@ export class CollectionFacets {
 
   async assertSearchFacetGroupCount() {
     await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+    await this.page.waitForTimeout(3000);
 
     const facetGroups = this.collectionFacets.locator('facets-template');
     expect(await facetGroups.count()).toEqual(7);
@@ -31,6 +32,7 @@ export class CollectionFacets {
 
   async assertCollectionFacetGroupCount() {
     await this.page.waitForLoadState('networkidle', { timeout: 60000 });
+    await this.page.waitForTimeout(3000);
 
     const facetGroups = this.collectionFacets.locator('facets-template');
     expect(await facetGroups.count()).toEqual(6);
@@ -89,6 +91,7 @@ export class CollectionFacets {
     );
     for (let i = 0; i < facetLabels.length; i++) {
       // wait for the promise to resolve before advancing the for loop
+      await this.page.waitForTimeout(5000);
       const facetRow = this.moreFacetsContent
         .locator('#more-facets')
         .getByRole('checkbox', { name: facetLabels[i] });
