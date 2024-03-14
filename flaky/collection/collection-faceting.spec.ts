@@ -1,6 +1,6 @@
-import { test } from '../fixtures';
+import { test } from '../../tests/fixtures';
 
-import { FacetGroupLocatorLabel, LayoutViewModeLocator } from '../models';
+import { FacetGroupLocatorLabel, LayoutViewModeLocator } from '../../tests/models';
 
 test('Verify if facets appear on first load', async ({ collectionPage }) => {
   await test.step('Assert facet group headers count', async () => {

@@ -1,6 +1,6 @@
-import { test } from '../fixtures';
+import { test } from '../../tests/fixtures';
 
-import { LayoutViewModeLocator, SearchOption } from '../models';
+import { LayoutViewModeLocator, SearchOption } from '../../tests/models';
 
 test('Tile, List, and Compact layout buttons change layout', async ({
   collectionPage,
